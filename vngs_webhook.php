@@ -10,6 +10,9 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_toke);
+$bot = new  \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret));
+
 if (!is_null($events['events'])) {
 	// Loop through each event
 	foreach ($events['events'] as $event) {
@@ -23,23 +26,20 @@ if (!is_null($events['events'])) {
 			
       		//อ่าน user Id displaname ของ line แต่ละน
       	
-			$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_toke);
-			$bot = new \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret));
 
 			$res = $bot->getProfile($text);
 			if ($res->isSucceeded()) {
 			    $profile = $res->getJSONDecodedBody();
 			    $displayName = $profile['displayName'];
 			}else{
-				$profile = $res->getJSONDecodedBody();
-				$displayName = $profile['displayName']."อ่านชื่อไม่ได้1";
+				$displayName = "อ่านชื่อไม่ได้3";
 			}
 			      		
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text." name ".$displayName." rePly token ".$replyToken,
+				'text' => $text." name ".$displayName,
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
