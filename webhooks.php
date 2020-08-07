@@ -1,5 +1,10 @@
 <?php // callback.php
+// HTTP Request
+GET https://api.line.me/v2/bot/profile/userId
 
+// Headers
+Authorization: Bearer CHANNEL-ACCESS-TOKEN
+	
 require "vendor/autoload.php";
 require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
