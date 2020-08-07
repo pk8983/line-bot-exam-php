@@ -21,12 +21,23 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			
-      		//อ่าน user Id displaname ของ line แต่ละน      		
+      		//อ่าน user Id displaname ของ line แต่ละน
+      		$bot = new \LINE\LINEBot(new CurlHTTPClient('your-channel-token'), [ 'channelSecret' => $access_token
+			]);
+
+			$res = $bot->getProfile($event['source']['userId']);
+			if ($res->isSucceeded()) {
+			    $profile = $res->getJSONDecodedBody();
+			    $displayName = $profile['displayName'];
+			    $statusMessage = $profile['statusMessage'];
+			    $pictureUrl = $profile['pictureUrl'];
+			}
+			      		
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text
+				'text' => $text." name ".$displayName,
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
