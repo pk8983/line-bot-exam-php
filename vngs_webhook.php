@@ -21,14 +21,12 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			
-      		//อ่าน user Id displaname ของ line แต่ละน
-      		$profile = " curl -v -X GET https://api.line.me/v2/profile/$text -H 'Authorization: Bearer $access_token'";
-      		
+      		//อ่าน user Id displaname ของ line แต่ละน      		
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text." ".$profile['displayName'],
+				'text' => $text
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
