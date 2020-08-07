@@ -22,15 +22,14 @@ if (!is_null($events['events'])) {
 
 			
       		//อ่าน user Id displaname ของ line แต่ละน
-      		$bot = new \LINE\LINEBot(new CurlHTTPClient('d63194425ca914f580959b2d17c0fc15'), [ 'channelSecret' => $access_token
-			]);
+      	
+			$httpClient = new CurlHTTPClient('d63194425ca914f580959b2d17c0fc15');
+			$bot = new LINEBot($httpClient, array('channelSecret' => $access_token));
 
 			$res = $bot->getProfile($event['source']['userId']);
 			if ($res->isSucceeded()) {
 			    $profile = $res->getJSONDecodedBody();
 			    $displayName = $profile['displayName'];
-			    $statusMessage = $profile['statusMessage'];
-			    $pictureUrl = $profile['pictureUrl'];
 			}
 			      		
 
