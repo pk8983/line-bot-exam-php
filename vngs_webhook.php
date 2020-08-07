@@ -26,7 +26,7 @@ if (!is_null($events['events'])) {
 			$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_toke);
 			$bot = new \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret));
 
-			$res = $bot->getProfile($text);
+			$res = $bot->getProfile('U0e6fd4dbfdaf9d6114d836617c0c26');
 			if ($res->isSucceeded()) {
 			    $profile = $res->getJSONDecodedBody();
 			    $displayName = $profile['displayName'];
