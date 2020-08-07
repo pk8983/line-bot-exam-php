@@ -22,7 +22,7 @@ if (!is_null($events['events'])) {
 
 			
       		//อ่าน user Id displaname ของ line แต่ละน
-      		$bot = new \LINE\LINEBot(new CurlHTTPClient('your-channel-token'), [ 'channelSecret' => $access_token
+      		$bot = new \LINE\LINEBot(new CurlHTTPClient('d63194425ca914f580959b2d17c0fc15'), [ 'channelSecret' => $access_token
 			]);
 
 			$res = $bot->getProfile($event['source']['userId']);
