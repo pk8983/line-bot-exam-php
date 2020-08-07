@@ -26,19 +26,20 @@ if (!is_null($events['events'])) {
 			$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_toke);
 			$bot = new \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret));
 
-			$res = $bot->getProfile('U0e6fd4dbfdaf9d6114d836617c0c26');
+			$res = $bot->getProfile($text);
 			if ($res->isSucceeded()) {
 			    $profile = $res->getJSONDecodedBody();
 			    $displayName = $profile['displayName'];
 			}else{
-				$displayName = "อ่านชื่อไม่ได้1";
+				$profile = $res->getJSONDecodedBody();
+				$displayName = $profile['displayName']."อ่านชื่อไม่ได้1";
 			}
 			      		
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text." name ".$displayName,
+				'text' => $text." name ".$displayName." rePly token ".$replyToken,
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
