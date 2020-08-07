@@ -24,14 +24,14 @@ if (!is_null($events['events'])) {
       		//อ่าน user Id displaname ของ line แต่ละน
       	
 			$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_toke);
-			$bot = new new \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret));
+			$bot = new \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret));
 
 			$res = $bot->getProfile($text);
 			if ($res->isSucceeded()) {
 			    $profile = $res->getJSONDecodedBody();
 			    $displayName = $profile['displayName'];
 			}else{
-				$displayName = "อ่านชื่อไม่ได้3";
+				$displayName = "อ่านชื่อไม่ได้1";
 			}
 			      		
 
