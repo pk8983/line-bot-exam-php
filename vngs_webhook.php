@@ -22,20 +22,13 @@ if (!is_null($events['events'])) {
 
 			
       		//อ่าน user Id displaname ของ line แต่ละน
-      		$profile = " https://api.line.me/v2/bot/profile/{$text}";
-      		$headers_profile = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-      		$ch_profile = curl_init($profile);
-			curl_setopt($ch_profile, CURLOPT_CUSTOMREQUEST, "GET");
-			curl_setopt($ch_profile, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch_profile, CURLOPT_HTTPHEADER, $headers_profile);
-			curl_setopt($ch_profile, CURLOPT_FOLLOWLOCATION, 1);
-			$result_profile = curl_exec($ch_profile);
-			curl_close($ch_profile);
+      		$profile = " curl -v -X GET https://api.line.me/v2/profile/$text -H 'Authorization: Bearer $access_token'";
+      		
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text." ".$result_profile['displayName'],
+				'text' => $text." ".$profile['displayName'],
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
