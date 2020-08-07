@@ -28,10 +28,12 @@ if (!is_null($events['events'])) {
 			$httpClient = new CurlHTTPClient('d63194425ca914f580959b2d17c0fc15');
 			$bot = new LINEBot($httpClient, array('channelSecret' => $access_token));
 
-			$res = $bot->getProfile($event['source']['userId']);
+			$res = $bot->getProfile($text);
 			if ($res->isSucceeded()) {
 			    $profile = $res->getJSONDecodedBody();
 			    $displayName = $profile['displayName'];
+			}else{
+				$displayName = "อ่านชื่อไม่ได้";
 			}
 			      		
 
