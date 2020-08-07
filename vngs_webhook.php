@@ -10,7 +10,7 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
-$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_toke);
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new  \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret));
 
 if (!is_null($events['events'])) {
@@ -32,7 +32,7 @@ if (!is_null($events['events'])) {
 			    $profile = $res->getJSONDecodedBody();
 			    $displayName = $profile['displayName'];
 			}else{
-				$displayName = "อ่านชื่อไม่ได้2";
+				$displayName = "อ่านชื่อไม่ได้1";
 			}
 			      		
 
