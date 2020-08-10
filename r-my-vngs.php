@@ -15,12 +15,11 @@ $bot = new  \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret))
 	$user_id = "U0e6fd4dbfdaf9d6114d836617c0c26a0";//$_POST['user_id'];
  	$message = "PR ของท่านได้รับการอนุมัติ";//$_POST['message'];
 	// Loop through each event
-	foreach ($events['events'] as $event) {
+
 		// Reply only when message sent is in 'text' format
 			// Get text sent
 			$text = $user_id;
 			// Get replyToken
-			$replyToken = $event['replyToken'];
 
 			
 
@@ -34,7 +33,7 @@ $bot = new  \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret))
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
-				'replyToken' => $replyToken,
+				'userId' => $user_id,
 				'messages' => [$messages],
 			];
 			$post = json_encode($data);
@@ -51,6 +50,6 @@ $bot = new  \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret))
 
 			echo $result . "\r\n";
 		
-	}
+	
 
 ?>
