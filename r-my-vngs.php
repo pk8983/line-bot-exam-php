@@ -9,8 +9,6 @@ $message = "PR ของท่านได้รับการอนุมั�
 	// Loop through each event
 
 	
-
-		$idPush = 'U0e6fd4dbfdaf9d6114d836617c0c26a0'
 		$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 		$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 		$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
