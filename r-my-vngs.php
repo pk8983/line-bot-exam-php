@@ -18,7 +18,7 @@ $bot = new  \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret))
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
 			// Get text sent
-			$text = $event['source']['userId'];
+			$text = $user_id;
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
@@ -28,7 +28,7 @@ $bot = new  \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret))
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $response,
+				'text' => $message,
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
