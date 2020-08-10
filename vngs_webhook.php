@@ -56,7 +56,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $text." name ".$displayName." ".$event['message']['text'],
+				'text' => $response." name ".$displayName." ".$event['message']['text'],
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
