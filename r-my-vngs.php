@@ -12,8 +12,8 @@ $events = json_decode($content, true);
 // Validate parsed JSON data
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new  \LINE\LINEBot($httpClient, array('channelSecret' => $channelSecret));
-	$user_id = $_POST['user_id'];
- 	$message = $_POST['message'];
+	$user_id = "U0e6fd4dbfdaf9d6114d836617c0c26a0";//$_POST['user_id'];
+ 	$message = "PR ของท่านได้รับการอนุมัติ";//$_POST['message'];
 	// Loop through each event
 	foreach ($events['events'] as $event) {
 		// Reply only when message sent is in 'text' format
