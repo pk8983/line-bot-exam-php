@@ -50,13 +50,14 @@ if (!is_null($events['events'])) {
 		   curl_setopt($ch_vngs, CURLOPT_RETURNTRANSFER, true);
 		   curl_setopt($ch_vngs, CURLOPT_REFERER, $_SERVER['HTTP_HOST']);
 		   curl_setopt( $ch_vngs, CURLOPT_SSL_VERIFYPEER, false );
+
 		   $response = curl_exec($ch_vngs);
 		   curl_close($ch_vngs);
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $response." name ".$displayName." ".$event['message']['text'],
+				'text' => $response,
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
