@@ -11,12 +11,12 @@ $arrayJson = json_decode($content, true);
     //รับข้อความจากผู้ใช้
     $message = $arrayJson['events'][0]['message']['text'];
     #ตัวอย่าง Message Type "Text"
-    if($message == "สวัสดี"){
+    if(!is_null($message)){
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
         
-        $textMessageBuilder = new TextMessageBuilder(json_encode($events));
+        $textMessageBuilder = new TextMessageBuilder(json_encode($arrayJson));
         replyMsg($arrayHeader,$textMessageBuilder);              
     }
   
