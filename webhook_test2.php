@@ -19,11 +19,11 @@ use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
     $message = $arrayJson['events'][0]['message']['text'];
     #ตัวอย่าง Message Type "Text"
     if(!is_null($message)){
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        /*$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
-        $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
+        $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";*/
         
-        $textMessageBuilder = new TextMessageBuilder(json_encode($arrayJson));
+        $arrayPostData = new TextMessageBuilder(json_encode($arrayJson));
         replyMsg($arrayHeader,$arrayPostData);              
     }
   
