@@ -24,48 +24,12 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
-			
-      		//อ่าน user Id displaname ของ line แต่ละน
-      	
-
-			$res = $bot->getProfile($text);
-			if ($res->isSucceeded()) {
-			    $profile = $res->getJSONDecodedBody();
-			    $displayName = $profile['displayName'];
-			}else{
-				$displayName = "อ่านชื่อไม่ได้1";
-			}
-
-			$data_send_vngs = array(
-		            'user_id' => $event['source']['userId'],
-		            'line_name' => $displayName,
-		            'message' => $event['message']['text'],
-		        ); 
-
-			 
-			   $ch_vngs = curl_init();
-			   curl_setopt($ch_vngs, CURLOPT_URL, 'https://www.my-vngs.com/main/line_document/r-line-bot_qa.php');
-			   curl_setopt($ch_vngs, CURLOPT_POSTFIELDS, $data_send_vngs);
-			   curl_setopt($ch_vngs, CURLOPT_TIMEOUT, 86400); // 1 Day Timeout
-			   curl_setopt($ch_vngs, CURLOPT_CONNECTTIMEOUT, 60000);
-			   curl_setopt($ch_vngs, CURLOPT_RETURNTRANSFER, true);
-			   curl_setopt($ch_vngs, CURLOPT_REFERER, $_SERVER['HTTP_HOST']);
-			   curl_setopt( $ch_vngs, CURLOPT_SSL_VERIFYPEER, false );
-
-			   $response = curl_exec($ch_vngs);
-			   curl_close($ch_vngs);
-
-			// Build message to reply back
-			$messages = [
-				'type' => 'text',
-				'text' => $response,
-			];
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages],
+				'messages' => 'test',
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
