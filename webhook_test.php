@@ -1,5 +1,10 @@
 <?php
-    $access_token = "DW8c1hq6M+RQ9/paVgF5sdpLmAYH1QDM14rCwiMXtse1t5JnXKSmc+F5ecquehzuXsbKO7uEGXsXgI/B+pvF7uUVkc2FB5RRf0Xdd5lQGhthiTe2b5Pin5EQjQfxVgKrJf2IJtPQKRJtm3PCkuo34AdB04t89/1O/w1cDnyilFU=";
+const functions = require("firebase-functions");
+const request = require("request-promise");
+
+const LINE_MESSAGING_API = "https://api.line.me/v2/bot/message";
+
+$access_token = "DW8c1hq6M+RQ9/paVgF5sdpLmAYH1QDM14rCwiMXtse1t5JnXKSmc+F5ecquehzuXsbKO7uEGXsXgI/B+pvF7uUVkc2FB5RRf0Xdd5lQGhthiTe2b5Pin5EQjQfxVgKrJf2IJtPQKRJtm3PCkuo34AdB04t89/1O/w1cDnyilFU=";
 
     $content = file_get_contents('php://input');
     $arrayJson = json_decode($content, true);
@@ -12,10 +17,59 @@
     $message = $arrayJson['events'][0]['message']['text'];
     #ตัวอย่าง Message Type "Text"
     if($message == "สวัสดี"){
-        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        /*$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
-        replyMsg($arrayHeader,$arrayPostData);
+        replyMsg($arrayHeader,$arrayPostData);*/
+        
+        exports.AdvanceMessage = functions.https.onRequest((req, res) => {
+        return request({
+    method: "POST",
+    uri: `${LINE_MESSAGING_API}/push`,
+    headers: LINE_HEADER,
+    body: JSON.stringify({
+      to: "<USER-ID>",
+      messages: [
+        {
+          type: "template",
+          altText: "This is a confirm template",
+          template: {
+            type: "confirm",
+            text: "Are you sure?",
+            actions: [
+              {
+                type: "message",
+                label: "Yes",
+                text: "yes"
+              },
+              {
+                type: "message",
+                label: "No",
+                text: "no"
+              }
+            ]
+          }
+        }
+      ]
+    })
+  }).then(() => {
+      return res.status(200).send("Done");
+  }).catch(error => {
+      return Promise.reject(error);
+  });
+});   
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
   
 function replyMsg($arrayHeader,$arrayPostData){
