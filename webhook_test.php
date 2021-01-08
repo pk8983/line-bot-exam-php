@@ -17,47 +17,11 @@ $access_token = "DW8c1hq6M+RQ9/paVgF5sdpLmAYH1QDM14rCwiMXtse1t5JnXKSmc+F5ecquehz
     $message = $arrayJson['events'][0]['message']['text'];
     #ตัวอย่าง Message Type "Text"
     if($message == "สวัสดี"){
-        /*$arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
+        $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
-        replyMsg($arrayHeader,$arrayPostData);*/
-        
-        exports.AdvanceMessage = functions.https.onRequest((req, res) => {
-        return request({
-    method: "POST",
-    uri: `${LINE_MESSAGING_API}/push`,
-    headers: LINE_HEADER,
-    body: JSON.stringify({
-      to: "<USER-ID>",
-      messages: [
-        {
-          type: "template",
-          altText: "This is a confirm template",
-          template: {
-            type: "confirm",
-            text: "Are you sure?",
-            actions: [
-              {
-                type: "message",
-                label: "Yes",
-                text: "yes"
-              },
-              {
-                type: "message",
-                label: "No",
-                text: "no"
-              }
-            ]
-          }
-        }
-      ]
-    })
-  }).then(() => {
-      return res.status(200).send("Done");
-  }).catch(error => {
-      return Promise.reject(error);
-  });
-});   
+        replyMsg($arrayHeader,$arrayPostData);
+         
         
         
         
@@ -68,7 +32,7 @@ $access_token = "DW8c1hq6M+RQ9/paVgF5sdpLmAYH1QDM14rCwiMXtse1t5JnXKSmc+F5ecquehz
         
         
         
-        
+     
         
     }
   
