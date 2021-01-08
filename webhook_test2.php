@@ -15,7 +15,9 @@ $arrayJson = json_decode($content, true);
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
-        replyMsg($arrayHeader,$arrayPostData);              
+        
+        $textMessageBuilder = new TextMessageBuilder(json_encode($events));
+        replyMsg($arrayHeader,$textMessageBuilder);              
     }
   
 function replyMsg($arrayHeader,$arrayPostData){
