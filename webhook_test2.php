@@ -6,7 +6,7 @@ define('LINE_MESSAGE_ACCESS_TOKEN','DW8c1hq6M+RQ9/paVgF5sdpLmAYH1QDM14rCwiMXtse1
 ');
 
 require "vendor/autoload.php";
-require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
+//require_once('vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php');
 
 ///////////// ส่วนของการเรียกใช้งาน class ผ่าน namespace
 use LINE\LINEBot;
