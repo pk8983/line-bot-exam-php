@@ -16,7 +16,7 @@ $arrayJson = json_decode($content, true);
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
         
-        //$textMessageBuilder = new TextMessageBuilder(json_encode($arrayJson));
+        $textMessageBuilder = new TextMessageBuilder(json_encode($arrayJson));
         replyMsg($arrayHeader,$arrayPostData);              
     }
   
