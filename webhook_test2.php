@@ -24,7 +24,7 @@ use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
-        $arrayPostData['messages'][0]['text'] = $textMessageBuilder;
+        //$arrayPostData['messages'][0]['text'] = $textMessageBuilder;
             
         replyMsg($arrayHeader,$arrayPostData);              
     }
