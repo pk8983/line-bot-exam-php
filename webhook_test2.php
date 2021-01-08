@@ -23,11 +23,21 @@ use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";*/
         
-        $arrayPostData = new TextMessageBuilder(json_encode($arrayJson));
-        replyMsg($arrayHeader,$arrayPostData);              
+        $replyToken = $arrayJson['events'][0]['replyToken'];
+        
+        $textMessageBuilder = new TextMessageBuilder(json_encode($arrayJson));
+        
+        $response = $bot->replyMessage($replyToken,$textMessageBuilder);
+        if ($response->isSucceeded()) {
+            echo 'Succeeded!';
+            return;
+        }
+        
+        echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+        //replyMsg($arrayHeader,$arrayPostData);              
     }
   
-function replyMsg($arrayHeader,$arrayPostData){
+/*function replyMsg($arrayHeader,$arrayPostData){
         $strUrl = "https://api.line.me/v2/bot/message/reply";
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL,$strUrl);
@@ -39,6 +49,6 @@ function replyMsg($arrayHeader,$arrayPostData){
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         $result = curl_exec($ch);
         curl_close ($ch);
-    }
+    }*/
    exit;
 ?>
