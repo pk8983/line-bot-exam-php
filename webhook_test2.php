@@ -12,19 +12,15 @@ $arrayJson = json_decode($content, true);
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$access_token}";
 
-use LINE\LINEBot\MessageBuilder;
-use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
     //รับข้อความจากผู้ใช้
     $message = $arrayJson['events'][0]['message']['text'];
     #ตัวอย่าง Message Type "Text"
     if(!is_null($message)){
         
-        $textMessageBuilder = new TextMessageBuilder(json_encode($arrayJson));
         $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
         $arrayPostData['messages'][0]['type'] = "text";
         $arrayPostData['messages'][0]['text'] = "สวัสดีจ้าาา";
-        //$arrayPostData['messages'][0]['text'] = $textMessageBuilder;
             
         replyMsg($arrayHeader,$arrayPostData);              
     }
