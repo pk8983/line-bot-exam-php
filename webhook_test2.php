@@ -4,10 +4,14 @@ $access_token = "DW8c1hq6M+RQ9/paVgF5sdpLmAYH1QDM14rCwiMXtse1t5JnXKSmc+F5ecquehz
 $content = file_get_contents('php://input');
 $arrayJson = json_decode($content, true);
 
+
     $arrayHeader = array();
     $arrayHeader[] = "Content-Type: application/json";
     $arrayHeader[] = "Authorization: Bearer {$access_token}";
-    
+
+use LINE\LINEBot\MessageBuilder;
+use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+
     //รับข้อความจากผู้ใช้
     $message = $arrayJson['events'][0]['message']['text'];
     #ตัวอย่าง Message Type "Text"
