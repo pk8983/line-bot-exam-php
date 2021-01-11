@@ -4,12 +4,18 @@
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
  
+
 // include composer autoload
 require_once ("vendor/autoload.php");
 require_once ("vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php");
  
 // การตั้งเกี่ยวกับ bot
-require_once ("bot_settings.php");
+//require_once ("bot_settings.php");
+
+//define('LINE_MESSAGE_CHANNEL_ID','1655560073');
+define('LINE_MESSAGE_CHANNEL_SECRET','2ec65e2ccf14cdb95e59c30c90640cbb');
+define('LINE_MESSAGE_ACCESS_TOKEN','DW8c1hq6M+RQ9/paVgF5sdpLmAYH1QDM14rCwiMXtse1t5JnXKSmc+F5ecquehzuXsbKO7uEGXsXgI/B+pvF7uUVkc2FB5RRf0Xdd5lQGhthiTe2b5Pin5EQjQfxVgKrJf2IJtPQKRJtm3PCkuo34AdB04t89/1O/w1cDnyilFU=
+');
  
 // กรณีมีการเชื่อมต่อกับฐานข้อมูล
 //require_once("dbconnect.php");
