@@ -1,10 +1,17 @@
 <?php
+
+$httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('DW8c1hq6M+RQ9/paVgF5sdpLmAYH1QDM14rCwiMXtse1t5JnXKSmc+F5ecquehzuXsbKO7uEGXsXgI/B+pvF7uUVkc2FB5RRf0Xdd5lQGhthiTe2b5Pin5EQjQfxVgKrJf2IJtPQKRJtm3PCkuo34AdB04t89/1O/w1cDnyilFU=
+');
+$bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '2ec65e2ccf14cdb95e59c30c90640cbb']);
+
+$response = $bot->replyText('Uadc722fa05c677a918cddf6b174d7da4', 'hello!');
+
 // กรณีต้องการตรวจสอบการแจ้ง error ให้เปิด 3 บรรทัดล่างนี้ให้ทำงาน กรณีไม่ ให้ comment ปิดไป
 //ini_set('display_errors', 1);
 //ini_set('display_startup_errors', 1);
 //error_reporting(E_ALL);
  
-
+/*
 // include composer autoload
 require_once ("vendor/autoload.php");
 require_once ("vendor/linecorp/line-bot-sdk/line-bot-sdk-tiny/LINEBotTiny.php");
@@ -82,4 +89,5 @@ if ($response->isSucceeded()) {
  
 // Failed
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
+*/
 ?>
