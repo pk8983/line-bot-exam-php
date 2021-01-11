@@ -59,7 +59,9 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 if(!is_null($events)){
     // ถ้ามีค่า สร้างตัวแปรเก็บ replyToken ไว้ใช้งาน
-    $replyToken = $events['events'][0]['replyToken'];
+    //$replyToken = $events['events'][0]['replyToken'];
+    $replyToken = 'Uadc722fa05c677a918cddf6b174d7da4';
+ 
 }
 // ส่วนของคำสั่งจัดเตียมรูปแบบข้อความสำหรับส่ง
 $textMessageBuilder = new TextMessageBuilder(json_encode($events));
