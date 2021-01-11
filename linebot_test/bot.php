@@ -4,7 +4,15 @@ $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient('DW8c1hq6M+RQ9/paVgF5s
 ');
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => '2ec65e2ccf14cdb95e59c30c90640cbb']);
 
-$response = $bot->replyText('Uadc722fa05c677a918cddf6b174d7da4', 'hello!');
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello');
+$response = $bot->replyMessage('<reply token>', $textMessageBuilder);
+if ($response->isSucceeded()) {
+    echo 'Succeeded!';
+    return;
+}
+
+// Failed
+echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
 // กรณีต้องการตรวจสอบการแจ้ง error ให้เปิด 3 บรรทัดล่างนี้ให้ทำงาน กรณีไม่ ให้ comment ปิดไป
 //ini_set('display_errors', 1);
